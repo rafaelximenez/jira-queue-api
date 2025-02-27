@@ -60,6 +60,10 @@ def salvar_e_enviar(request):
             "Content-Type": "application/json",
         }
 
+        print(api_url)
+        print(headers)
+        print(request_json)
+        
         response = requests.post(api_url, headers=headers, json=request_json)
         response.raise_for_status()
         print(f"Resposta da API externa: {response.text}")
