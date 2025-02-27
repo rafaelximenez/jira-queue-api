@@ -3,6 +3,12 @@ from google.cloud import storage
 import json
 import datetime
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+JIRA_TASK_API_URL=os.getenv("JIRA_TASK_API_URL")
 
 @functions_framework.http
 def salvar_e_enviar(request):
@@ -32,7 +38,7 @@ def salvar_e_enviar(request):
     print(f"Dados recebidos: {request_json}")
 
     try:
-        bucket_name = 'suri-storage-files'
+        bucket_name = os.getenv("BUCKET_NAME")
         folder_name = 'jira/issues'
         timestamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')
         file_name = f'planilha_linha_{timestamp}.json'
@@ -49,7 +55,7 @@ def salvar_e_enviar(request):
         return (f'Erro ao salvar no Cloud Storage: {e}', 500)
 
     try:
-        api_url = "https://jira-management-task-api-87769041781.us-central1.run.app/criar_task/"
+        api_url = JIRA_TASK_API_URL
         headers = {
             "Content-Type": "application/json",
         }
