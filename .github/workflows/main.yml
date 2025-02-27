@@ -27,7 +27,8 @@ jobs:
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v2'
       with:
-        workload_identity_provider: 'projects/87769041781/locations/global/workloadIdentityPools/suri-github-actions-pool/providers/github-actions-provider' # SUBSTITUA
+
+        workload_identity_provider: 'projects/87769041781/locations/global/workloadIdentityPools/ga-pool-jira-queue-api/providers/ga-pool-jira-queue-api'
         service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
 
     - name: Set up Cloud SDK
