@@ -43,6 +43,11 @@ jobs:
 
         echo "$JIRA_MANAGEMENT_SECRET" > .env
 
+    - name: Print .env contents
+      run: |
+        echo "Printing .env contents:"
+        cat .env
+
     - name: Deploy to Cloud Functions
       run: |
         gcloud functions deploy ${{ env.FUNCTION_NAME }} \
