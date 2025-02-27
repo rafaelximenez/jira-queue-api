@@ -6,10 +6,10 @@ on:
       - main
 
 env:
-  PROJECT_ID: suribase  # SUBSTITUA
-  FUNCTION_NAME: jira-queue-api  # SUBSTITUA (nome da sua Cloud Function)
-  REGION: us-central1  # SUBSTITUA
-  SERVICE_ACCOUNT_EMAIL: suri-certificates-management@suribase.iam.gserviceaccount.com # SUBSTITUA
+  PROJECT_ID: suribase
+  FUNCTION_NAME: jira-queue-api
+  REGION: us-central1
+  SERVICE_ACCOUNT_EMAIL: suri-certificates-management@suribase.iam.gserviceaccount.com
 
 jobs:
   deploy:
@@ -31,7 +31,7 @@ jobs:
         service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
 
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v2'
+      uses: 'google-github-actions/setup-gcloud@v2'
       with:
         project_id: ${{ env.PROJECT_ID }}
 
